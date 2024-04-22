@@ -8,9 +8,11 @@ function UrlForm({ setUrls }) {
   const handleSubmit = e => {
     e.preventDefault();
     postUrls('', {long_url: urlToShorten, title: title})
-    getUrls('')
-      .then(data => setUrls(data.urls))
-      .catch(error => console.log(error))
+      .then(() => {
+        getUrls('')
+          .then(data => setUrls(data.urls))
+          .catch(error => console.log(error))
+      })
     clearInputs();
   }
 
